@@ -61,12 +61,32 @@ class _PageDetailCountriesState extends State<PageDetailCountries> {
     return ListView.builder(
       itemCount: data.countries?.length,
       itemBuilder: (BuildContext context, int index) {
-        return _buildItemCountries("${data.countries?[index].name}");
+        return _buildItemCountries("${data.countries?[index].name}", "${data.countries?[index].iso3}");
       },
     );
   }
 
-  Widget _buildItemCountries(String value) {
-    return Text(value);
+  Widget _buildItemCountries(String value, String iso3) {
+    return Container(
+        width: 300,
+        height: 200,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: Colors.blue,
+        elevation: 10,
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Country Name : '+ value, style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('ISO : ' + iso3)
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
